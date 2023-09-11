@@ -14,7 +14,9 @@ namespace Full_GRASP_And_SOLID.Library
         private ArrayList steps = new ArrayList();
 
         public Product FinalProduct { get; set; }
-
+        public ArrayList Steps{
+            get {return steps; }
+        }
         public void AddStep(Step step)
         {
             this.steps.Add(step);
@@ -33,6 +35,10 @@ namespace Full_GRASP_And_SOLID.Library
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
+
+            CostCalc costCalc = new CostCalc();
+            double TotalCost = costCalc.CalcCost(this);
+            Console.WriteLine($"Costo total: {TotalCost}");
         }
     }
 }
